@@ -1,3 +1,31 @@
-<nav class="navbar-expand-md navbar-dark fixed-top bg-dark">
-    <span class="navbar-brand mb-0 h1">Navbar</span>
-</nav>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">Profil</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+        {% endif %}
+      </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">Logo</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
+            </li>
+        {% else %}
+            <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+                <a class="nav-link" href="{{path('login')}}">Connexion</a>
+            </li>
+            <li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+                <a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
+            </li>
+        {% endif %}
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">User<i class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+        </div>
+      </nav>

@@ -16,4 +16,12 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+    
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout()
+    {
+        
+    }
 }
