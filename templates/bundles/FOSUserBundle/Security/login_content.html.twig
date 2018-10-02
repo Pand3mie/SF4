@@ -1,0 +1,63 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+        {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        
+    <!-- <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    End Page Loading -->
+    <div id="login-page" class="row">
+      <div class="col s12 z-depth-4 card-panel">
+        <form class="login-form" action="{{ path("fos_user_security_check") }}" method="post">
+            {% if csrf_token %}
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            {% endif %}
+          <div class="row">
+            <div class="input-field col s12 center">
+              <img src="{{ asset('build/images/login-logo.png')}}" alt="" class="circle responsive-img valign profile-image-login">
+              <p class="center login-form-text">Admin Panel connection</p>
+            </div>
+          </div>
+          <div class="row margin">
+            <div class="input-field col s12">
+              <i class="material-icons prefix pt-5">person_outline</i>
+              <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+              <label for="username" class="center-align">{{ 'security.login.username'|trans }}</label>
+            </div>
+          </div>
+          <div class="row margin">
+            <div class="input-field col s12">
+              <i class="material-icons prefix pt-5">lock_outline</i>
+              <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+              <label for="password">{{ 'security.login.password'|trans }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12 l12 ml-2 mt-3">
+             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+             <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+               <input type="submit" id="_submit" name="_submit" class="btn waves-effect waves-light col s12" value="{{ 'security.login.submit'|trans }}" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6 m6 l6">
+              <p class="margin medium-small"><a href="{{ path("fos_user_registration_register") }}">Register Now!</a></p>
+            </div>
+            <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a></p>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+   
+

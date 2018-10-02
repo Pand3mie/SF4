@@ -1,0 +1,35 @@
+easy_admin:
+    entities:
+        User:
+            class: App\Entity\User
+            form:
+                fields:
+                    - { property: 'username', label: 'Login' }
+                    - { property: 'email', label: 'Email' }
+                    - { property: 'enabled', type: 'radio' }
+                    - { property: 'lastLogin', label: 'Last connexion' }
+                    # if administrators are allowed to edit users' passwords and roles, add this:
+                    - { property: 'plainPassword', type: 'text', type_options: { required: false }, label: 'Password' }
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+            list:
+                help: Administration of Users!
+                actions:
+                  - { name: 'edit', icon: 'pencil', label: '' }
+                  - { name: 'delete', icon: 'trash', label: '' }
+                fields: [{ property: 'username', label: 'Name' }, { property: 'enabled', label: 'Statut' , template: 'Fields/toggle.html.twig'}, { property: 'email', label: 'Contact' }, { property: 'roles', label: 'Rôles' }]
+
+
+                  
+
+    site_name: 'Pand3mie'
+    design:
+    # 'dark' is the default value
+        color_scheme: 'dark'
+      #  templates: 
+           # layout: 'default/admin/layout.html.twig'
+    #assets:
+        #css:
+         #   - '/build/css/app.css'
+       # js:
+            # this option works exactly the same as the 'css' option
+         #   - 'build/js/app.js'

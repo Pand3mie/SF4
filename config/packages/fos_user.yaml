@@ -1,0 +1,18 @@
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: App\Entity\User
+    group:
+        group_class: App\Entity\Group
+    from_email:
+        address: "n.fouche@attineos.fr"
+        sender_name: "n.fouche@attineos.fr"
+    service:
+        mailer: fos_user.mailer.twig_swift
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address: nicolasfouche@free.fr
+                sender_name: Admin Pand3mie
+            template: 'Mail/registration.html.twig'
