@@ -5,5 +5,12 @@ const $ = require('jquery');
 global.$ = global.jQuery = $;
 
 $( document ).ready(function(){
-$(".dropdown-trigger").dropdown();
+    $('.dropdown-button').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        hover: true, // Activate on hover
+        coverTrigger: false, // Displays dropdown below the button
+        alignment: 'right' // Displays dropdown with edge aligned to the left of button
+      }
+    );
 });

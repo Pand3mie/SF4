@@ -1,5 +1,23 @@
 {% extends 'default/base.html.twig' %}
-
+{% block stylesheets %}
+<style>
+        html,
+        body {
+            height: 100%;
+        }
+        html {
+            display: table;
+            margin: auto;
+        }
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        
+</style>
+<link rel="stylesheet" href="{{ asset('build/css/app.css') }}" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
 {% block body %}
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
