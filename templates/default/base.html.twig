@@ -16,6 +16,9 @@
         {% block header %}{% endblock %}
         {% block social %}{% endblock %}
         {% block body %}{% endblock %}
+        {% block footer %}
+        {{ include ('default/footer.html.twig') }}
+        {% endblock %}
         {% block javascripts %}
         <script src="{{asset('build/js/app.js')}}"></script>
         {% endblock %}
