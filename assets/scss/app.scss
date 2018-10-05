@@ -5,9 +5,6 @@
 /*
   Tip: You can change the theme name here to generate new default style, you can also create your own !
 */
-html{
-  color: #FFFFFF;
-}
 
 a {
   text-decoration: none;
@@ -32,11 +29,14 @@ outline:0;
 }
 body {
   background-image: url('build/images/background.jpg');
-  background-repeat: repeat-x;
   background-size: 100%;
 }
 .body-content{
   min-height: 800px;
   background-color: white;
   border-radius: 16px;
+}
+div {
+  text-align: justify;
+  text-justify: inter-word;
 }
