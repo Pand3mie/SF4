@@ -13,4 +13,12 @@ $( document ).ready(function(){
         alignment: 'right' // Displays dropdown with edge aligned to the left of button
       }
     );
+    $(window).scroll(function(){
+        if($(window).scrollTop()>100){
+            $('nav').addClass('sticky-nav');
+        }else{
+            $('nav').removeClass('sticky-nav');
+        }
+    });
+
 });

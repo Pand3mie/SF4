@@ -9,13 +9,12 @@
 {{ include('default/menu.html.twig') }}
 {% endblock %}
 {% block body %}
-<div class="container body-content">
-        <h3>Fixed Navbar</h3>
-      <div class="row">
-        <div class="col s4">
-          <p>A fixed navigation bar stays visible in a fixed position (top or bottom) independent of the page scroll.</p>
-          <p>A fixed navigation bar stays visible in a fixed position (top or bottom) independent of the page scroll.</p>    
-        </div>
-      </div>
+<div class="container">
+  <div class="box white"></div>
+  <div class="box purple"></div>
+  <div class="box gray"></div>
 </div>
+{% endblock %}
+{% block social %}
+{{ include('default/social.html.twig') }}
 {% endblock %}
