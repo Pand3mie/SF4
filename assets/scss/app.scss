@@ -76,20 +76,24 @@ div {
   border-radius: 0px 15px 15px 0px;
 }
 .left-sidebar li:nth-child(1){
-  background:#3b5999;
+  background:#333333;
 }
 .left-sidebar li:nth-child(2){
-  background:#55acee;
+  background:#333333;
 }
 .left-sidebar li:nth-child(3){
-  background:#0077B5;
+  background:#333333;
 }
 .left-sidebar li:nth-child(4){
-  background:#dd4b39;
+  background:#333333;
 }
 .left-sidebar li:hover{
   width: 150px;
 }
 .margetop{
   height:200px;
+}
+.logo{
+  position:fixed;
+  top: -54px;
 }
