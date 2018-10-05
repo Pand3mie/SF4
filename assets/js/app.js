@@ -14,10 +14,12 @@ $( document ).ready(function(){
       }
     );
     $(window).scroll(function(){
-        if($(window).scrollTop()>100){
-            $('nav').addClass('sticky-nav');
+        if($(window).scrollTop()>0){
+            $('nav').removeClass('grey darken-3');
+            $('nav').addClass('grey darken-1 sticky-nav', 2000, 'fade');
         }else{
-            $('nav').removeClass('sticky-nav');
+            $('nav').addClass('grey darken-3')
+            $('nav').removeClass('sticky-nav', 2000, 'fade');
         }
     });
 
