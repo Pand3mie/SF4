@@ -1,5 +1,6 @@
 
 <div class="left-sidebar">
+    <a class="btn-floating waves-effect waves-light grey darken-3 modal-trigger" href="#social"><i class="material-icons">add</i></a>
     <ul class="collection right-align">
         <li class="collection-item"><i class="fab fa-facebook"></i></li>
         <li class="collection-item"><i class="fab fa-twitter-square"></i></li>
@@ -7,3 +8,16 @@
         <li class="collection-item"><i class="fab fa-google-plus-square"></i></li>
     </ul>
 </div>
+
+  <!-- Social Modal Structure -->
+    <div id="social" class="modal">
+        <div class="modal-content">
+            <h4>Ajouter un reseau social</h4>
+            {{ render(controller(
+                'App\\Controller\\SocialController::addSocial'
+            )) }}
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>

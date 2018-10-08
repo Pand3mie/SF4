@@ -21,6 +21,8 @@ $( document ).ready(function(){
             $('nav').addClass('grey darken-3')
             $('nav').removeClass('sticky-nav', 2000, 'fade');
         }
-    });
 
+    });
+    $('.sidenav').sidenav();
+    $('.modal').modal();
 });
