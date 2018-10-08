@@ -19,7 +19,11 @@ class SocialType extends AbstractType
             ->add('name',TextType::class)
             ->add('urlSocial', UrlType::class, array('label'=>'Url du reseau social'))
             ->add('logo', ChoiceType::class, array(
+                'label'=> 'Reseau Social',
+                'attr' => array(
+                    'class'=>'social'),
                 'choices' => array(
+                    '-- Réseau social --' => null,
                     'FaceBook' => 'Facebook',
                     'Twitter' => 'Twitter',
                 ),

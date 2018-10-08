@@ -3,13 +3,13 @@
 {{ form_start(form) }}
     {{ form_row(form.name) }}
     {{ form_row(form.urlSocial) }}
-    <div class="input-field col s12">
-        {{ form_widget(form.logo) }}
-        {{ form_label(form.logo)}}
-    </div>
-    <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Valider
+    {{ form_row(form.logo) }}
+
+        <div class="modal-footer">
+            <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Valider
             <i class="material-icons right">send</i>
-          </button>
+            </button>
+        </div>
 {{ form_end(form) }}
 </div>
 </div>
