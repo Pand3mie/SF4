@@ -7,9 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 
 class SocialType extends AbstractType
 {
@@ -18,8 +18,12 @@ class SocialType extends AbstractType
         $builder
             ->add('name',TextType::class)
             ->add('urlSocial', UrlType::class, array('label'=>'Url du reseau social'))
-            ->add('logo',CheckboxType::class)
-        ;
+            ->add('logo', ChoiceType::class, array(
+                'choices' => array(
+                    'FaceBook' => 'Facebook',
+                    'Twitter' => 'Twitter',
+                ),
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

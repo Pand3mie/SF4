@@ -13,6 +13,7 @@ class SocialController extends AbstractController
 
     /**
      * @Route("/addSocial", name="addsocial")
+     * 
      */
     public function addSocial(Request $request)
     {
@@ -23,6 +24,11 @@ class SocialController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($social);
+            $em->flush();
+
+            return $this->redirectToRoute('home');
         }
         return $this->render('social/addSocial.html.twig', [
             'form' => $form->createView(),

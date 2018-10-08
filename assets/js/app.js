@@ -1,5 +1,13 @@
 
+
+const routes = require('../../public/build/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+
+Routing.setRoutingData(routes);
+
 import M from 'materialize-css/dist/js/materialize.min.js'
+
+
 
 const $ = require('jquery');
 global.$ = global.jQuery = $;
@@ -25,4 +33,5 @@ $( document ).ready(function(){
     });
     $('.sidenav').sidenav();
     $('.modal').modal();
+
 });
