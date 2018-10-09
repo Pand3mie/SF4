@@ -15,9 +15,17 @@
         {% block menu %}{% endblock %}
         {% block header %}{% endblock %}
         {% block social %}{% endblock %}
-            <main>
-                {% block body %}{% endblock %}
-            </main>
+        <main>
+            {% block body %}
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                    <div class="flash-{{ label }}">
+                    {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endblock %}
+        </main>
         {% block footer %}
         {{ include ('default/footer.html.twig') }}
         {% endblock %}

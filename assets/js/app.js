@@ -30,5 +30,6 @@ $( document ).ready(function(){
     $('.sidenav').sidenav();
     $('.modal').modal();
     $('select').material_select();
+    $('.tooltipped').tooltip();
 
 });

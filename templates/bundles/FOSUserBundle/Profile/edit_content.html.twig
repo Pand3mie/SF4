@@ -1,8 +1,27 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-    </div>
-{{ form_end(form) }}
+<!-- Cards container -->
+<div class="container services">
+        <h2>Edition du Profile</h2>
+        <div class="row">
+            <!--card-1-->
+            <div class="col s12 m6 l9 center-align">
+                <div class="card">
+                        <div class="card-image">
+                                <img src="{{asset('build/images/web.jpeg')}}">
+                                <span class="card-title">Edition</span>
+                        </div>
+                    <div class="card-content">
+                        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                        {{ form_widget(form) }}
+                        <div class="card-action">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">{{ 'profile.edit.submit'|trans }}
+                            <i class="material-icons right">send</i>
+                        </button>
+                        {{ form_end(form) }}
+                    </div></div>
+                    
+                    
+                </div>
+            </div>
+             <!--end card-1-->
