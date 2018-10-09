@@ -23,10 +23,14 @@ class SocialType extends AbstractType
                 'attr' => array(
                     'class'=>'social'),
                 'choices' => array(
-                    '-- Réseau social --' => null,
                     'FaceBook' => 'Facebook',
                     'Twitter' => 'Twitter',
+                    'Linkedin' => 'Linkedin',
+                    'Google+' => 'Google+'
+
                 ),
+                'multiple' => 'false',
+                'placeholder' => 'Choisir un reseau social',
             ));
     }
 

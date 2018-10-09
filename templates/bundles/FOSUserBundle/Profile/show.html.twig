@@ -1,5 +1,24 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends 'default/base.html.twig' %}
 
-{% block fos_user_content %}
-{% include "@FOSUser/Profile/show_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block title %}Hello{% endblock %}
+
+{% block header %}
+{{ include('default/header.html.twig') }}
+{% endblock %}
+
+{% block menu %}
+{{ include('default/menu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+        {% block fos_user_content %}
+        {% include "@FOSUser/Profile/show_content.html.twig" %}
+        {% endblock fos_user_content %}
+
+{% endblock %}
+
+{% block social %}
+{{ include('default/social.html.twig') }}
+{% endblock %}
+

@@ -5,6 +5,16 @@
 /*
   Tip: You can change the theme name here to generate new default style, you can also create your own !
 */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 
 a {
   text-decoration: none;
