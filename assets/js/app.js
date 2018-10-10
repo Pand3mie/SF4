@@ -17,6 +17,15 @@ $( document ).ready(function(){
         alignment: 'right' // Displays dropdown with edge aligned to the left of button
       }
     );
+    $('.dropdown-button-mobile').dropdown({
+        inDuration: 300,
+        outDuration: 225,
+        hover: true, // Activate on hover
+        coverTrigger: false, // Displays dropdown below the button
+        alignment: 'right' // Displays dropdown with edge aligned to the left of button
+      }
+    );
+
     $(window).scroll(function(){
         if($(window).scrollTop()>0){
             $('nav').removeClass('grey darken-3');
@@ -27,8 +36,11 @@ $( document ).ready(function(){
         }
 
     });
+
     $('.sidenav').sidenav();
+
     $('.modal').modal();
+
     $('.carousel.carousel-slider').carousel({
         fullWidth: true,
         indicators: true,
@@ -38,8 +50,6 @@ $( document ).ready(function(){
    $('.carousel').carousel('next');
    setTimeout(autoplay, 6500);
  }
-    $('select').material_select();
 
-    $('.tooltipped').tooltip();
 
 });
