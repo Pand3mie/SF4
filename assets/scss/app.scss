@@ -114,5 +114,20 @@ body {
   background: grey;
   margin-top: 50px;
   margin-bottom: 161px;
-  min-height: 500px;
+  /* min-height: 500px; */
+}
+.login-center{
+  position: fixed;
+  left: 37%;
+  width: 100%;
+  top: 9%;
+}
+#cookie-law-info-bar{
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6) !important;
+  position: fixed;
+  bottom: 0px !important;
+  left: 0 !important;
+  height: 143px;
+  color: white;
 }

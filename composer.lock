@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d3f0ea39ba35f324a1da104b9ac4fc8a",
+    "content-hash": "1d1b857fb781c228958aebbfc6993477",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1626,6 +1626,34 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "mustangx/eu-cookie-law-bundle",
+            "version": "1.0.1",
+            "target-dir": "Eu/CookieLawBundle",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/MustangX/eu-cookie-law-bundle.git",
+                "reference": "7daf199bc372ea464fc3462dd30e8ad427d31b1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v3/projects/MustangX%2Feu-cookie-law-bundle/repository/archive.zip?sha=7daf199bc372ea464fc3462dd30e8ad427d31b1f",
+                "reference": "7daf199bc372ea464fc3462dd30e8ad427d31b1f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Eu\\CookieLawBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Eu Cookie Law Bundle to handle new privacy law",
+            "time": "2017-06-18T18:09:59+00:00"
         },
         {
             "name": "ocramius/package-versions",
