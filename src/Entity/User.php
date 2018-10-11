@@ -37,8 +37,13 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Social", mappedBy="relation")
      */
-    private $socialUser; 
-
+    private $socialUser;
+    
+    
+    /**
+     * @ORM\Column(type="boolean", options={"default":false})
+     */
+    private $onLineUser;
 
     public function __construct()
     {
@@ -138,6 +143,26 @@ class User extends BaseUser
                 $socialUser->setRelation(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of onLineUser
+     */ 
+    public function getOnLineUser()
+    {
+        return $this->onLineUser;
+    }
+
+    /**
+     * Set the value of onLineUser
+     *
+     * @return  self
+     */ 
+    public function setOnLineUser($onLineUser)
+    {
+        $this->onLineUser = $onLineUser;
 
         return $this;
     }
