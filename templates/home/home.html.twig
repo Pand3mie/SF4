@@ -3,68 +3,111 @@
 {% block title %}Hello{% endblock %}
 
 {% block header %}
-{{ include('default/header.html.twig') }}
+    {{ include('default/header.html.twig') }}
 {% endblock %}
 {% block menu %}
-{{ include('default/menu.html.twig') }}
+    {{ include('default/menu.html.twig') }}
 {% endblock %}
 {% block body %}
-<div class="container">
-  <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center"><i class="material-icons">flash_on</i></h2>
-          <h5 class="center">Speeds up development</h5>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <i class="material-icons">flash_on</i>
+                    </h2>
+                    <h5 class="center">Speeds up development</h5>
 
-          <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          <p><a href="#">En savoir plus ></a> </p>
+                    <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                    <p>
+                        <a href="#">En savoir plus ></a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <i class="material-icons">group</i>
+                    </h2>
+                    <h5 class="center">User Experience Focused</h5>
+
+                    <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                    <p>
+                        <a href="#">En savoir plus ></a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center">
+                        <i class="material-icons">settings</i>
+                    </h2>
+                    <h5 class="center">Easy to work with</h5>
+
+                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                    <p>
+                        <a href="#">En savoir plus ></a>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center"><i class="material-icons">group</i></h2>
-          <h5 class="center">User Experience Focused</h5>
-
-          <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          <p><a href="#">En savoir plus ></a> </p>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center"><i class="material-icons">settings</i></h2>
-          <h5 class="center">Easy to work with</h5>
-
-          <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          <p><a href="#">En savoir plus ></a> </p>
-        </div>
-      </div>
+        <a class="waves-effect waves-light btn-small button-middle grey darken-3">En savoir plus sur l'entreprise</a>
     </div>
-
-          <a class="waves-effect waves-light btn-small button-middle grey darken-3">En savoir plus sur l'entreprise</a>
-</div>
-<div class="back">
+    <div class="back">
         <div class="carousel carousel-slider center" data-indicators="true">
             <div class="carousel-item grey darken-4 white-text" href="#one!">
-            <h2>First Panel</h2>
-            <p class="white-text">This is your first panel</p>
+                <h2>First Panel</h2>
+                <div class="container">
+                    <div class="row">
+                      <div class="col s12 m8 offset-m2 l6 offset-l3">
+                        <div class="card-panel grey lighten-5 z-depth-1">
+                          <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                This is a square image. Add the "circle" class to it to make it appear circular.
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col s12 m8 offset-m2 l6 offset-l3">
+                        <div class="card-panel grey lighten-5 z-depth-1">
+                          <div class="row valign-wrapper">
+                            <div class="col s2">
+                              <img src="images/yuna.jpg" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s10">
+                              <span class="black-text">
+                                This is a square image. Add the "circle" class to it to make it appear circular.
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
             <div class="carousel-item grey darken-3 white-text" href="#two!">
-            <h2>Second Panel</h2>
-            <p class="white-text">This is your second panel</p>
+                <h2>Second Panel</h2>
+                <p class="white-text">This is your second panel</p>
             </div>
             <div class="carousel-item grey darken-2 white-text" href="#three!">
-            <h2>Third Panel</h2>
-            <p class="white-text">This is your third panel</p>
+                <h2>Third Panel</h2>
+                <p class="white-text">This is your third panel</p>
             </div>
             <div class="carousel-item grey darken-1 white-text" href="#four!">
-            <h2>Fourth Panel</h2>
-            <p class="white-text">This is your fourth panel</p>
+                <h2>Fourth Panel</h2>
+                <p class="white-text">This is your fourth panel</p>
             </div>
-            </div>
-</div>
+        </div>
+    </div>
 {% endblock %}
 {% block social %}
-{{ include('default/social.html.twig') }}
+    {{ include('default/social.html.twig') }}
 {% endblock %}

@@ -2,7 +2,7 @@
 <nav class="grey darken-3" style="z-index: 99999">
     <div class="nav-wrapper">
         <div class="container">
-        <a href="{{ path('home') }}" class="brand-logo logo"><img src="{{ asset('build/images/logo.png') }}" alt=""></a>
+        <a href="{{ path('home') }}" class="brand-logo logo bounce"><img src="{{ asset('build/images/logo.png') }}" alt=""></a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
             <li><a href="{{ path('home') }}">Accueil</a></li>
@@ -40,8 +40,11 @@
             {% endif %}
     </ul>
     </div>
+    <div id="bar"></div>
 </div>
+
 </nav>
+
 <!-- Menu sidebar mobile -->
 <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ path('home') }}"></a></li>

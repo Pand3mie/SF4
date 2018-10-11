@@ -20,6 +20,7 @@ Encore
      */
     .addStyleEntry('css/app', './assets/scss/app.scss')
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/spinner', './assets/js/spinner.js')
     .addPlugin(new CopyWebpackPlugin([
         // copies to {output}/static
         { from: './assets/img', to: 'images' }

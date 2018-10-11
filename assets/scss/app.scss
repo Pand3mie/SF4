@@ -5,6 +5,11 @@
 /*
   Tip: You can change the theme name here to generate new default style, you can also create your own !
 */
+
+/* Surchage Materialize css */
+
+
+
 body {
   display: flex;
   min-height: 100vh;
@@ -120,7 +125,7 @@ body {
   position: fixed;
   left: 37%;
   width: 100%;
-  top: 9%;
+  top: 1%;
 }
 #cookie-law-info-bar{
   width: 100%;
@@ -131,3 +136,90 @@ body {
   height: 143px;
   color: white;
 }
+#bar{
+position: absolute;
+bottom:0;
+left:0;
+background:#E58949;
+width: 0%;  
+height:2px;
+}
+.bounce {
+  -webkit-animation-name: bounceInDown;
+  animation-name: bounceInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes bounceInDown {
+  0%, 60%, 75%, 90%, 100% {
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  
+  0% {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -3000px, 0);
+  transform: translate3d(0, -3000px, 0);
+  }
+  
+  60% {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 25px, 0);
+  transform: translate3d(0, 25px, 0);
+  }
+  
+  75% {
+  -webkit-transform: translate3d(0, -10px, 0);
+  transform: translate3d(0, -10px, 0);
+  }
+  
+  90% {
+  -webkit-transform: translate3d(0, 5px, 0);
+  transform: translate3d(0, 5px, 0);
+  }
+  
+  100% {
+  -webkit-transform: none;
+  transform: none;
+  }
+  }
+  
+  @keyframes bounceInDown {
+  0%, 60%, 75%, 90%, 100% {
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  
+  0% {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -3000px, 0);
+  transform: translate3d(0, -3000px, 0);
+  }
+  
+  60% {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 25px, 0);
+  transform: translate3d(0, 25px, 0);
+  }
+  
+  75% {
+  -webkit-transform: translate3d(0, -10px, 0);
+  transform: translate3d(0, -10px, 0);
+  }
+  
+  90% {
+  -webkit-transform: translate3d(0, 5px, 0);
+  transform: translate3d(0, 5px, 0);
+  }
+  
+  100% {
+  -webkit-transform: none;
+  transform: none;
+  }
+  }
+  .dropdown-content li > a, .dropdown-content li > span {
+  color:#E58949;
+  }
+ 
