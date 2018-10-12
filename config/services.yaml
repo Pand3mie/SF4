@@ -44,3 +44,6 @@ services:
         tags:
             - { name: 'kernel.event_listener', event: 'security.interactive_login' }
 
+    logout_handler:
+        class: App\EventListener\LogoutListener
+        arguments: ["@security.token_storage"]

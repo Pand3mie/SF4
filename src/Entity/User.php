@@ -21,6 +21,10 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $adress;
 
     /**
      * @ORM\Column(type="integer", length=6, options={"default":0})
@@ -163,6 +167,26 @@ class User extends BaseUser
     public function setOnLineUser($onLineUser)
     {
         $this->onLineUser = $onLineUser;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of adress
+     */ 
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * Set the value of adress
+     *
+     * @return  self
+     */ 
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
 
         return $this;
     }

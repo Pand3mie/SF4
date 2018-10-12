@@ -23,7 +23,10 @@ security:
                 login_path: fos_user_security_login
                 check_path: fos_user_security_check
 
-            logout:       true
+            logout:       
+                path: /logout
+                target: /
+                handlers: [logout_handler]
             anonymous:    true
             remember_me:
                 secret:   '%kernel.secret%'
