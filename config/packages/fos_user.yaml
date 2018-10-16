@@ -16,3 +16,5 @@ fos_user:
                 address: nicolasfouche@free.fr
                 sender_name: Admin Pand3mie
             template: 'Mail/registration.html.twig'
+        form:
+            type: App\Form\LoginType

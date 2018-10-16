@@ -1,8 +1,38 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
+<div class="container">
+    <div class="row">
+      <div class="col s12 m6 l12 card-panel">
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<div class="row">
+    <div class="input-field col s6 center">
+    <img src="{{ asset('build/images/logo.png')}}" alt="" class="circle responsive-img valign profile-image-login">
+    </div>
+</div>
+<div class="row">
+    <div class="col s6">
+        {{ form_row(form.title) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.username) }}
+    </div>
+    <div class="col s6">
+    {{ form_row(form.company) }}
+    {{ form_row(form.plainPassword) }}
+    </div>
+</div>
+
+<br><br>
+    <div class="center">
+        <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">{{ 'registration.submit'|trans }}
+         <i class="material-icons right">send</i>
+        </button>
+    </div>
+    <div class="row">
+    <div class="input-field col s6 m6 l6">
+            <p><a href="{{ path("home") }}">Retour</a></p>
     </div>
 {{ form_end(form) }}
+        </div>
+    </div>
+</div>

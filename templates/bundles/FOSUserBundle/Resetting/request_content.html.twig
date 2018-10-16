@@ -1,11 +1,28 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-    <div>
-        <label for="username">{{ 'resetting.request.username'|trans }}</label>
-        <input type="text" id="username" name="username" required="required" />
+<div class="login-center">
+    <div id="login-page" class="row">
+        <div class="col s12 m6 l3 card-panel">
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                <div class="row">
+                    <div class="input-field col s12 center">
+                        <img src="{{ asset('build/images/logo.png')}}" alt="" class="circle responsive-img valign profile-image-login">
+                    </div>
+                </div>
+                <div>
+                    <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                    <input type="text" id="username" name="username" required="required"/>
+                </div>
+                <div class="center">
+                        <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">{{ 'resetting.request.submit'|trans }}
+                                <i class="material-icons right">send</i>
+                              </button>
+                </div>
+                <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                                <p class=""><a href="{{ path("home") }}">Retour</a></p>
+                        </div>
+            </form>
+        </div>
     </div>
-    <div>
-        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
-    </div>
-</form>
+</div>

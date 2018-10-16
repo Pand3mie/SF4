@@ -47,3 +47,8 @@ services:
     logout_handler:
         class: App\EventListener\LogoutListener
         arguments: ["@security.token_storage"]
+    
+    app.form.registration:
+        class: App\Form\LoginType
+        tags:
+            - { name: 'form.type', alias: 'app_user_registration' }
