@@ -52,3 +52,7 @@ services:
         class: App\Form\LoginType
         tags:
             - { name: 'form.type', alias: 'app_user_registration' }
+    app.service.social:
+        class: App\Service\SocialControl
+        arguments: ['@doctrine']        
+        

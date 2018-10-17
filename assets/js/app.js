@@ -45,6 +45,6 @@ $('.carousel.carousel-slider').carousel({
    $('.carousel').carousel('next');
    setTimeout(autoplay, 10000);
  }
-
+M.updateTextFields();
 
 });

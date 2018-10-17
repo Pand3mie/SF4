@@ -1,14 +1,23 @@
 
+{% if getsocial is defined %}
 <div class="left-sidebar">
     <a class="btn-floating waves-effect waves-light grey darken-3 modal-trigger" href="#social"><i class="material-icons">add</i></a>
     <ul class="collection right-align">
+        {% if getsocial.facebook != null %}
         <li class="collection-item"><i class="fab fa-facebook"></i></li>
+        {% endif %}
+        {% if getsocial.twitter != null %}
         <li class="collection-item"><i class="fab fa-twitter-square"></i></li>
+        {% endif %}
+        {% if getsocial.linkedin != null %}
         <li class="collection-item"><i class="fab fa-linkedin"></i></li>
+        {% endif %}
+        {% if getsocial.google != null %}
         <li class="collection-item"><i class="fab fa-google-plus-square"></i></li>
+        {% endif %}
     </ul>
 </div>
-
+{% endif %}
   <!-- Social Modal Structure -->
     <div id="social" class="modal">
         <div class="modal-content">

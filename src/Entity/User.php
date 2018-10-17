@@ -98,6 +98,19 @@ class User extends BaseUser
      */
     protected $github;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255, nullable=true)
+     */
+    protected $linkedin;
+
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="google", type="string", length=255, nullable=true)
+     */
+    protected $google;
 
 
     public function __construct()
@@ -407,6 +420,53 @@ class User extends BaseUser
     public function setGithub(string $github)
     {
         $this->github = $github;
+
+        return $this;
+    }
+        /**
+     * Get the value of linkedin
+     *
+     * @return  string
+     */ 
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * Set the value of linkedin
+     *
+     * @param  string  $linkedin
+     *
+     * @return  self
+     */ 
+    public function setLinkedin(string $linkedin)
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+            /**
+     * Get the value of google
+     *
+     * @return  string
+     */ 
+    public function getGoogle()
+    {
+        return $this->google;
+    }
+
+    /**
+     * Set the value of google
+     *
+     * @param  string  $google
+     *
+     * @return  self
+     */ 
+    public function setGoogle(string $google)
+    {
+        $this->google = $google;
 
         return $this;
     }
