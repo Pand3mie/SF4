@@ -4,16 +4,16 @@
     <a class="btn-floating waves-effect waves-light grey darken-3 modal-trigger" href="#social"><i class="material-icons">add</i></a>
     <ul class="collection right-align">
         {% if getsocial.facebook != null %}
-        <li class="collection-item"><i class="fab fa-facebook"></i></li>
+        <a href="http://www.facebook.com/{{ getsocial.facebook }}"> <li class="collection-item"><i class="fab fa-facebook"></i></li></a>
         {% endif %}
         {% if getsocial.twitter != null %}
-        <li class="collection-item"><i class="fab fa-twitter-square"></i></li>
+        <a href="http://www.twitter.com/{{ getsocial.twitter }}"><li class="collection-item"><i class="fab fa-twitter-square"></i></li></a>
         {% endif %}
         {% if getsocial.linkedin != null %}
-        <li class="collection-item"><i class="fab fa-linkedin"></i></li>
+        <a href="http://www.linkedin.com/{{ getsocial.linkedin }}"><li class="collection-item"><i class="fab fa-linkedin"></i></li></a>
         {% endif %}
         {% if getsocial.google != null %}
-        <li class="collection-item"><i class="fab fa-google-plus-square"></i></li>
+        <a href="http://www.googleplus.com/{{ getsocial.google }}"><li class="collection-item"><i class="fab fa-google-plus-square"></i></li></a>
         {% endif %}
     </ul>
 </div>
