@@ -12,7 +12,6 @@
 
 {% block body %}
 <div class="container">
-
     {% for blogPost in blogPosts %}
          <div class="row">
                 <div class="col s12 m7 l12">
@@ -20,11 +19,9 @@
                     <div class="card-image">
                       <img src="https://picsum.photos/900/300/?image={{ random(1000) }}" alt="L'image n'a pas pu se charger">
                       {% if app.user.username == blogPost.author %}
-                      <a class="btn-floating halfway-fab waves-effect waves-light orange pulse"><i class="material-icons">mode_edit</i></a>
+                      <a class="btn-floating halfway-fab waves-effect waves-light orange"><i class="material-icons">mode_edit</i></a>
                       {% endif %}
-                      
                       <span class="card-title bold">{{ blogPost.title }}</span>
-                      
                     </div>
                     <div class="card-content">
                             <p>Poste le
@@ -32,18 +29,16 @@
                                 </p>
                                 <hr>
                       <p>{{ blogPost.description }}</p>
-                      <blockquote><div class="badge">{{ blogPost.blogComments|length }} commentaires</div></blockquote> 
                     </div>
                     <div class="card-action">
                       <a href="{{ path('blog_view', {'id': blogPost.id}) }}">Lire plus...</a>
-                      
                     </div>
                   </div>
                 </div>
               </div>
     {% endfor %}
-  <div class="row">
-  {{ knp_pagination_render(pagination) }}
-  </div>
 </div>
 {% endblock %}
+<div class="row">
+    {{ knp_pagination_render(pagination) }}
+</div>

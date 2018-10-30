@@ -17,7 +17,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12 blog-main">
+            <div class="col s12 m4 l12 blog-main">
                 {% for label, messages in app.flashes %}
                     {% for message in messages %}
                         <div class="bg-{{ label }}">
@@ -25,23 +25,37 @@
                         </div>
                     {% endfor %}
                 {% endfor %}
-
+        </div>
+        <div class="row">
                 {{ form_start(form) }}
-                    <div class="col-md-12">
-                        <div class="form-group col-md-4">
-                            {{ form_row(form.title) }}
+                    <div class="col s12 m4 l12">
+                        <div class="input-field col s12">
+                            {{ form_widget(form.title) }}
+                            {{ form_label(form.title) }}
                         </div>
-                        <div class="form-group col-md-4">
-                            {{ form_row(form.slug) }}
+                        <div class="input-field col s12">
+                            {{ form_widget(form.slug) }}
+                            {{ form_label(form.slug) }}
                         </div>
-                        <div class="form-group col-md-12">
-                            {{ form_row(form.description) }}
+                        <div class="input-field col s12">
+                            {{ form_widget(form.description, { 'attr': {
+                                'id' : 'textarea1',
+                                'class' : 'materialize-textarea'
+                            }} ) }}
+                            {{ form_label(form.description)}}
                         </div>
-                        <div class="form-group col-md-12">
-                            {{ form_row(form.body) }}
-                        </div>
-                        <div class="form-group col-md-4 pull-right">
-                            {{ form_widget(form.create) }}
+                        <div class="input-field col s12">
+                                {{ form_widget(form.body, { 'attr': {
+                                    'id' : 'textarea1',
+                                    'class' : 'materialize-textarea'
+                                }} ) }}
+                                {{ form_label(form.body)}}
+                            </div>
+                        <div class="input-field col s12">
+                            {{ form_widget(form.create, { 'attr': {
+                                'class' : 'btn waves-effect waves-light'
+
+                            }}) }}
                         </div>
                     </div>
                 {{ form_end(form) }}

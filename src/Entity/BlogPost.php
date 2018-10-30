@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -71,6 +73,16 @@ class BlogPost
      * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BlogComment", mappedBy="comment_post")
+     */
+    private $blogComments;
+
+    public function __construct()
+    {
+        $this->blogComments = new ArrayCollection();
+    }
 
 
     /**
@@ -271,5 +283,39 @@ class BlogPost
     public function preUpdate()
     {
         $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * @return Collection|BlogComment[]
+     */
+    public function getBlogComments(): Collection
+    {
+        return $this->blogComments;
+    }
+
+    public function addBlogComment(BlogComment $blogComment): self
+    {
+        if (!$this->blogComments->contains($blogComment)) {
+            $this->blogComments[] = $blogComment;
+            $blogComment->setCommentPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogComment(BlogComment $blogComment): self
+    {
+        if ($this->blogComments->contains($blogComment)) {
+            $this->blogComments->removeElement($blogComment);
+            // set the owning side to null (unless already changed)
+            if ($blogComment->getCommentPost() === $this) {
+                $blogComment->setCommentPost(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString() {
+        return $this->title;
     }
 }

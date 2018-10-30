@@ -1,10 +1,51 @@
 
 import M from 'materialize-css/dist/js/materialize.min.js'
+const routes = require('../../public/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+
+Routing.setRoutingData(routes);
+
 
 const $ = require('jquery');
 global.$ = global.jQuery = $;
 
 $(document).ready(function(){
+
+    // delete post in ajax
+
+    var id = $( ".delete-entries" ).attr('id');
+    
+
+    $( ".delete-entries" ).each(function(){
+
+    $(this).on("click",function() {
+
+        var id = $(this).attr('id');
+        var $tr = $(this).closest('tr');
+        $.ajax({
+            url: "delete-entry",
+            type: "POST",
+            data: {id: id },
+            success: function(){
+                $tr.find('td').fadeOut(1000,function(){ 
+                $tr.remove();
+                             
+                }); 
+            },
+            beforeSend: function(){
+                return confirm("Etes vous sur de vouloir supprimer le post ?")
+            },
+            complete: function(){
+                M.toast({html: 'Post supprimé', classes: 'rounded'});
+            }
+        });
+});
+        
+});
+
+    // fin delete Post ajax
+
+    $('.tooltipped').tooltip();
 
     $('.dropdown-button').dropdown({
         inDuration: 300,

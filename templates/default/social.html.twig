@@ -1,7 +1,7 @@
 
 {% if getsocial is defined %}
 <div class="left-sidebar">
-    <a class="btn-floating waves-effect waves-light grey darken-3 modal-trigger" href="#social"><i class="material-icons">add</i></a>
+    <a class="btn-floating waves-effect waves-light grey darken-3 modal-trigger tooltipped" data-position="right" data-tooltip="Ajouter un réseau social" href="#social"><i class="material-icons">add</i></a>
     <ul class="collection right-align">
         {% if getsocial.facebook != null %}
         <a href="http://www.facebook.com/{{ getsocial.facebook }}"> <li class="collection-item"><i class="fab fa-facebook"></i></li></a>
@@ -26,4 +26,3 @@
                 'App\\Controller\\SocialController::addSocial', {'request':app.request})) }}
         </div>
     </div>
-    

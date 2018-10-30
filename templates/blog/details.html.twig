@@ -1,0 +1,90 @@
+{% extends "default/base.html.twig" %}
+
+{% block title %}Details{% endblock %}
+
+{% block header %}
+    {{ include('default/header.html.twig') }}
+{% endblock %}
+
+{% block menu %}
+    {{ include('default/menu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m7 l12">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/900/300/?image={{ random(1000) }}" alt="L'image n'a pas pu se charger">
+                        {% if app.user.username == blogPosts.author %}
+                            <a class="btn-floating halfway-fab waves-effect waves-light orange pulse">
+                                <i class="material-icons">mode_edit</i>
+                            </a>
+                        {% endif %}
+                        <span class="card-title bold">{{ blogPosts.title }}</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Poste le
+                            {{ blogPosts.createdAt|date("m/d/Y H:i:s", "Europe/Paris") }}
+                        </p>
+                        <hr>
+                        <p>{{ blogPosts.body }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ path('blog') }}">Retour...</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if comments !='' %}
+      {% for bcomments in comments %}
+      <div class="container">
+          <div class="row">
+      <div class="col s12 m7 l12">
+          <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row valign-wrapper">
+              <div class="col s2">
+                <img src="{{ asset('build/images/avatars.png') }}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+              </div>
+              <div class="col s10">
+                <span class="black-text">
+                    <p>Poste le
+                        {{ bcomments.createAt|date("m/d/Y H:i:s", "Europe/Paris") }} par {{ bcomments.email }}
+                    </p>
+                    <hr>
+                    <p>{{ bcomments.content }}</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      {% endfor %}
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m7 l12">
+                <div class="card hoverable">
+                    <div class="card-content">
+                        <h4>Poster un commentaire :</h4>
+                        {{ form_start(form)}}
+                        {{form_label (form.email)}}
+                        {{form_widget (form.email)}}
+                        {{form_label (form.content)}}
+                        {{form_widget (form.content)}}
+                    </div>
+                    <div class="card-action">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Commenter
+                        </button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
