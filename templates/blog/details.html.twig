@@ -51,7 +51,7 @@
               <div class="col s10">
                 <span class="black-text">
                     <p>Poste le
-                        {{ bcomments.createAt|date("m/d/Y H:i:s", "Europe/Paris") }} par {{ bcomments.email }}
+                        {{ bcomments.createAt|date("m/d/Y H:i:s", "Europe/Paris") }} par <span style="font-weight: bold">{{ bcomments.email }}</span>
                     </p>
                     <hr>
                     <p>{{ bcomments.content }}</p>
@@ -72,10 +72,18 @@
                     <div class="card-content">
                         <h4>Poster un commentaire :</h4>
                         {{ form_start(form)}}
-                        {{form_label (form.email)}}
-                        {{form_widget (form.email)}}
+                        <div class="row">
+                          <div class="input-field col s12">
+                              {{form_label (form.email)}}
+                              {{form_widget (form.email)}}
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
                         {{form_label (form.content)}}
-                        {{form_widget (form.content)}}
+                        {{form_widget (form.content, {'attr': {'class':'materialize-textarea'}})}}
+                      </div>
+                    </div>
                     </div>
                     <div class="card-action">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Commenter

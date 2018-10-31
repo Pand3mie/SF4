@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints as Recaptcha;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BlogCommentRepository")
@@ -41,6 +42,7 @@ class BlogComment
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
 
     public function getId(): ?int
     {

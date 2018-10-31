@@ -79,9 +79,15 @@ class BlogPost
      */
     private $blogComments;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="tagsBlog")
+     */
+    private $blogTags;
+
     public function __construct()
     {
         $this->blogComments = new ArrayCollection();
+        $this->BlogTags = new ArrayCollection();
     }
 
 
@@ -317,5 +323,33 @@ class BlogPost
     }
     public function __toString() {
         return $this->title;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getBlogTags(): Collection
+    {
+        return $this->blogTags;
+    }
+
+    public function addBlogTag(Tag $blogTag): self
+    {
+        if (!$this->blogTags->contains($blogTag)) {
+            $this->blogTags[] = $blogTag;
+            $blogTag->addTagsBlog($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogTag(Tag $blogTag): self
+    {
+        if ($this->BlogTags->contains($blogTag)) {
+            $this->BlogTags->removeElement($blogTag);
+            $blogTag->removeTagsBlog($this);
+        }
+
+        return $this;
     }
 }

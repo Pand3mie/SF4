@@ -37,21 +37,26 @@
                 <a type="button" href="{{ path('admin_create_entry') }}" class="btn btn-primary pull-right">Ajouter un post</a>
             </div>
             <div class="col-sm-12 blog-main">
-                <table class="table table-striped">
+                <table class="table table-striped responsive-table">
                     <thead>
                         <th>Titre</th>
                         <th>Création le</th>
                         <th>Modifié le</th>
                         <th>Description</th>
-                        <th class="center" colspan="2">Actions</th>
+                        <th>Nbre de commentaires</th>
+                        <th>Créé par </th>
+                        <th>Actions</th>
                     </thead>
                     {% for blogPost in blogPosts %}
                         <tr>
                             <td>{{ blogPost.title }}</td>
-                            <td>{{ blogPost.createdAt|date('F j, Y') }}</td>
-                            <td>{{ blogPost.updatedAt|date('F j, Y') }}</td>
+                            <td>{{ blogPost.createdAt|date('m/d/Y') }}</td>
+                            <td>{{ blogPost.updatedAt|date('m/d/Y') }}</td>
                             <td>{{ blogPost.description[:25]~'...' }}</td>
-                            <td class="center"><a class="btn btn-danger delete-entries" id="{{ blogPost.id }}">Supprimer</a>
+                            <td>{{ blogPost.blogComments|length }}</td>
+                            <td>{{ blogPost.author }}
+                            </td>
+                            <td class="center" colspan="2"><a class="btn btn-danger delete-entries" id="{{ blogPost.id }}">Supprimer</a>
                                 <a class="btn btn-danger" href="#">Modifier</a>
                             </td>
                         </tr>

@@ -43,13 +43,14 @@ class AdminController extends Controller
 public function entriesAction(Request $request)
 {
   
-    $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
+//    $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
 
-    $blogPosts = [];
+ //   $blogPosts = [];
 
-    if ($author) {
-        $blogPosts = $this->blogPostRepository->findByAuthor($author);
-    }
+  //  if ($author) {
+   //     $blogPosts = $this->blogPostRepository->findByAuthor($author);
+  //  }
+     $blogPosts = $this->blogPostRepository->findBy(array(),array('id' => 'DESC'));
      $paginator  = $this->get('knp_paginator');
      $pagination = $paginator->paginate($blogPosts, $request->query->getInt('page', 1), 3);
     return $this->render('default/admin/entries.html.twig', [

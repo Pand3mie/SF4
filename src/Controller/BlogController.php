@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\BlogPost;
+use App\Form\CommentType;
+use App\Entity\BlogComment;
+use App\Form\EntryFormType;
+use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\BlogPost;
-use App\Entity\BlogComment;
-use App\Form\EntryFormType;
-use App\Form\CommentType;
 
 class BlogController extends Controller
 
@@ -27,6 +28,7 @@ class BlogController extends Controller
     $this->entityManager = $entityManager;
     $this->blogPostRepository = $entityManager->getRepository('App:BlogPost');
     $this->userRepository = $entityManager->getRepository('App:User');
+    $this->tagRepository = $entityManager->getRepository('App:Tag');
     }
 
 
@@ -35,7 +37,11 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $this->blogPostRepository->findAll();
+        $query = $this->blogPostRepository->getTagsMeta();
+        //dump($query);
+
+        //$query = $this->blogPostRepository->findBy(array(),array('id' => 'DESC'));
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */

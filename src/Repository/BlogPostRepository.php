@@ -47,4 +47,27 @@ class BlogPostRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getTagsMeta()
+    {
+        return $this->createQueryBuilder('s')
+        ->leftJoin('s.blogTags', 'p')
+        ->addSelect('p')
+        ->getQuery()
+        ->getResult();
+
+    }
+
+
+    public function getLastBlogPost()
+    {
+        return $this->createQueryBuilder('s')
+        ->leftJoin('s.blogTags', 'p')
+        ->addSelect('p')
+        ->orderBy('s.id', 'DESC')
+        ->setMaxResults(2)
+        ->getQuery()
+        ->getResult();
+
+    }
 }
