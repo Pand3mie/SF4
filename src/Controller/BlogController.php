@@ -97,7 +97,7 @@ class BlogController extends Controller
     }
 
 
-    /**
+/**
  * @Route("/create-entry", name="admin_create_entry")
  *
  * @param Request $request
@@ -127,6 +127,37 @@ public function createEntryAction(Request $request)
 
     return $this->render('default/admin/entry_form.html.twig', [
         'form' => $form->createView()
-    ]);
-}
+        ]);
+    }
+
+    /**
+    * @Route("/modify-entry/{id}", name="admin_modify_entry")
+    *
+    * @param Request $request
+    *
+    * @return \Symfony\Component\HttpFoundation\Response
+    */
+   public function modifyEntryAction(Request $request, $id)
+   {
+        $em = $this->getDoctrine()->getManager();
+        $modify_post = $em->getRepository('App:BlogPost')->find($id);
+        
+       $form = $this->createForm(EntryFormType::class, $modify_post);
+       $form->handleRequest($request);
+   
+       // Check is valid
+       if ($form->isSubmitted() && $form->isValid()) {
+           $this->entityManager->persist($modify_post);
+           $this->entityManager->flush($modify_post);
+   
+           $this->addFlash('success', 'Votre post à bien été modifié');
+   
+           return $this->redirectToRoute('admin_entries');
+       }
+   
+       return $this->render('default/admin/entry_form.html.twig', [
+           'form' => $form->createView()
+           ]);
+       }
+
 }

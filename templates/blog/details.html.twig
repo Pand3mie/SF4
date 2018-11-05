@@ -18,7 +18,7 @@
                     <div class="card-image">
                         <img src="https://picsum.photos/900/300/?image={{ random(1000) }}" alt="L'image n'a pas pu se charger">
                         {% if app.user.username == blogPosts.author %}
-                            <a class="btn-floating halfway-fab waves-effect waves-light orange pulse">
+                            <a class="btn-floating halfway-fab waves-effect waves-light orange pulse" href="{{ path('admin_modify_entry', {'id': blogPosts.id}) }}">
                                 <i class="material-icons">mode_edit</i>
                             </a>
                         {% endif %}

@@ -39,6 +39,7 @@
             <div class="col-sm-12 blog-main">
                 <table class="table table-striped responsive-table">
                     <thead>
+                        <th>Id</th>
                         <th>Titre</th>
                         <th>Création le</th>
                         <th>Modifié le</th>
@@ -49,6 +50,7 @@
                     </thead>
                     {% for blogPost in blogPosts %}
                         <tr>
+                            <td><a href="{{ path('blog_view', {'id': blogPost.id}) }}">{{ blogPost.id }}</a></td>
                             <td>{{ blogPost.title }}</td>
                             <td>{{ blogPost.createdAt|date('m/d/Y') }}</td>
                             <td>{{ blogPost.updatedAt|date('m/d/Y') }}</td>
@@ -57,7 +59,7 @@
                             <td>{{ blogPost.author }}
                             </td>
                             <td class="center" colspan="2"><a class="btn btn-danger delete-entries" id="{{ blogPost.id }}">Supprimer</a>
-                                <a class="btn btn-danger" href="#">Modifier</a>
+                                <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': blogPost.id}) }}">Modifier</a>
                             </td>
                         </tr>
                     {% else %}

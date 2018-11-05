@@ -125,6 +125,9 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v2.8.0"
     },
+    "markbaker/complex": {
+        "version": "1.4.7"
+    },
     "monolog/monolog": {
         "version": "1.23.0"
     },
@@ -148,6 +151,9 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
+    },
+    "phpoffice/phpspreadsheet": {
+        "version": "1.5.0"
     },
     "psr/cache": {
         "version": "1.0.1"

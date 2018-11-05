@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <a class="waves-effect waves-light btn-small button-middle grey darken-3">En savoir plus sur l'entreprise</a>
+        <a  onclick="window.open('{{ compagnies }}', '_blank')" class="waves-effect waves-light btn-small button-middle grey darken-3">En savoir plus sur l'entreprise</a>
     </div>
     <div class="back">
         <div class="carousel carousel-slider center" data-indicators="true">
@@ -66,7 +66,7 @@
                             <div class="col s12 m8 l6">
                                 <div class="card-panel grey lighten-5 z-depth-1">
                                     <span class="black-text">
-                                        <p>{{  lasts.title }}</p>
+                                        <p><a href="{{ path('blog_view', {'id': lasts.id}) }}">{{  lasts.title }}</a></p>
                                         <p>{{ lasts.description[:45]~'...'  }}</p>
                                     </span>
                                 </div>
