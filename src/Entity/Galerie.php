@@ -45,6 +45,12 @@ class Galerie
      */
     private $categorie;
 
+    /**
+     *  @ORM\Column(type="integer")
+     */
+    private $star;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +112,26 @@ class Galerie
     public function setCategorie(string $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of star
+     */ 
+    public function getStar()
+    {
+        return $this->star;
+    }
+
+    /**
+     * Set the value of star
+     *
+     * @return  self
+     */ 
+    public function setStar($star)
+    {
+        $this->star = $star;
 
         return $this;
     }

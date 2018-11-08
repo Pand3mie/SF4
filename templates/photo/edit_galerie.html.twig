@@ -43,6 +43,7 @@
                         <th>Titre</th>
                         <th>Miniature</th>
                         <th>Description</th>
+                        <th>Note</th>
                         <th>Actions</th>
                     </thead>
                     {% for image in images %}
@@ -51,6 +52,7 @@
                             <td>{{ image.title }}</td>
                             <td width="150px"><img src="{{ image.image }}?image={{ random(1000) }}" alt="Chargement impossible" class="responsive-img"></td>
                             <td>{{ image.description[:25]~'...' }}</td>
+                            <td>{{ image.star }}/5</td>
                              <td><a class="btn btn-danger delete-image" id="{{ image.id }}">Supprimer</a>
                                 <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': image.id}) }}">Modifier</a>
                             </td>

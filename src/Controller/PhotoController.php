@@ -42,6 +42,7 @@ class PhotoController extends Controller
      */
     public function editGalerie()
     {
+
         $images = $this->getDoctrine()
         ->getRepository(Galerie::class)
         ->findAll();
@@ -49,6 +50,7 @@ class PhotoController extends Controller
         $pagination = $paginator->paginate(
             $images
         );
+
         return $this->render('photo/edit_galerie.html.twig', [
             'images' => $images, 'pagination' => $pagination
         ]);
@@ -110,6 +112,26 @@ return new Response("Erreur : ce n'est pas une requete Ajax", 400);
         return $this->render('photo/create_galerie.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+
+    /**
+     * @Route("/star", name="star-save", options={"expose"=true})
+     */
+    public function starSave(Request $request)
+    {
+        if($request->isXmlHttpRequest()){
+            $id = $request->request->get('id');
+            $star = $request->request->get('ratingValue');
+            $image = $this->GalerieRepository->findOneById($id);
+            $image->setStar($star);
+            $this->entityManager->persist($image);
+            $this->entityManager->flush();
+        
+        
+            return new Response('Post delete');
+        }
+        return new Response("Erreur : ce n'est pas une requete Ajax", 400);
     }
 
 }
