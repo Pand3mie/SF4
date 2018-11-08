@@ -4,6 +4,7 @@ const routes = require('../../public/js/fos_js_routes.json');
 import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
 
 Routing.setRoutingData(routes);
+require('webpack-jquery-ui/draggable');
 
 
 const $ = require('jquery');
@@ -43,10 +44,42 @@ $(document).ready(function(){
         
 });
 
+$( ".delete-image" ).each(function(){
+
+    $(this).on("click",function() {
+
+        var id = $(this).attr('id');
+        var $tr = $(this).closest('tr');
+        var $card = $(this).closest('deleteCard');
+        $.ajax({
+            url: "delete-image",
+            type: "POST",
+            data: {id: id },
+            success: function(){
+                $tr.find('td').fadeOut(1000,function(){ 
+                $tr.remove();
+            });
+                $card.find('deleteCard').fadeOut(1000,function(){ 
+                $card.remove();
+                             
+                }); 
+            },
+            beforeSend: function(){
+                return confirm("Etes vous sur de vouloir supprimer l'image' ?")
+            },
+            complete: function(){
+                M.toast({html: 'image supprimé', classes: 'rounded'});
+            }
+        });
+});
+        
+});
+
+  
     // fin delete Post ajax
 
     $('.tooltipped').tooltip();
-
+    
     $('.dropdown-button').dropdown({
         inDuration: 300,
         outDuration: 225,
@@ -87,5 +120,9 @@ $('.carousel.carousel-slider').carousel({
    setTimeout(autoplay, 10000);
  }
 M.updateTextFields();
+$('.fixed-action-btn').floatingActionButton({
+    direction:'left'
+});
+
 
 });

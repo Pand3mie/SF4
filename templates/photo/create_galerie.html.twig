@@ -1,0 +1,64 @@
+{% extends 'default/base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block header %}
+    {{ include('default/header.html.twig') }}
+{% endblock %}
+
+{% block menu %}
+    {{ include('default/menu.html.twig') }}
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="blog-header">
+        <h2 class="blog-title"></h2>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m4 l12 blog-main">
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="bg-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+    </div>
+    <div class="row">
+            {{ form_start(form) }}
+                <div class="col s12 m4 l12">
+                    <div class="input-field col s12">
+                        {{ form_widget(form.title) }}
+                        {{ form_label(form.title) }}
+                    </div>
+                    <div class="input-field col s12">
+                        {{ form_widget(form.categorie) }}
+                        {{ form_label(form.categorie) }}
+                    </div>
+                    <div class="input-field col s12">
+                        {{ form_widget(form.description, { 'attr': {
+                            'id' : 'textarea1',
+                            'class' : 'materialize-textarea'
+                        }} ) }}
+                        {{ form_label(form.description)}}
+                    </div>
+                    <div class="input-field col s12">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                          <span>File</span>
+                          {{ form_widget(form.image) }}
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -14,7 +14,7 @@
 {% block body %}
     <div class="container">
         <div class="blog-header">
-            <h2 class="blog-title">Gestion des posts</h2>
+            <h2 class="blog-title">Gestion de la Galerie</h2>
             <p class="lead blog-description"></p>
         </div>
 
@@ -34,37 +34,30 @@
                 {% endfor %}
             </div>
             <div class="col-md-12 col-lg-12 col-xl-12">
-                <a type="button" href="{{ path('admin_create_entry') }}" class="btn btn-primary pull-right">Ajouter un post</a>
+                <a type="button" href="{{ path('galerieCreate') }}" class="btn btn-primary pull-right">Ajouter une image</a>
             </div>
-            <div class="col-sm-12 blog-main">
+            <div class="col s12 m6 l8">
                 <table class="table table-striped responsive-table">
                     <thead>
                         <th>Id</th>
                         <th>Titre</th>
-                        <th>Création le</th>
-                        <th>Modifié le</th>
+                        <th>Miniature</th>
                         <th>Description</th>
-                        <th>Nbre de commentaires</th>
-                        <th>Créé par </th>
                         <th>Actions</th>
                     </thead>
-                    {% for blogPost in blogPosts %}
-                        <tr id="{{ blogPost.id }}" class="draggable">
-                            <td><a href="{{ path('blog_view', {'id': blogPost.id}) }}">{{ blogPost.id }}</a></td>
-                            <td>{{ blogPost.title }}</td>
-                            <td>{{ blogPost.createdAt|date('m/d/Y') }}</td>
-                            <td>{{ blogPost.updatedAt|date('m/d/Y') }}</td>
-                            <td>{{ blogPost.description[:25]~'...' }}</td>
-                            <td>{{ blogPost.blogComments|length }}</td>
-                            <td>{{ blogPost.author }}
-                            </td>
-                            <td class="center" colspan="2"><a class="btn btn-danger delete-entries" id="{{ blogPost.id }}">Supprimer</a>
-                                <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': blogPost.id}) }}">Modifier</a>
+                    {% for image in images %}
+                        <tr id="{{ image.id }}" class="draggable">
+                            <td><a href="{{ path('blog_view', {'id': image.id}) }}">{{ image.id }}</a></td>
+                            <td>{{ image.title }}</td>
+                            <td width="150px"><img src="{{ image.image }}?image={{ random(1000) }}" alt="Chargement impossible" class="responsive-img"></td>
+                            <td>{{ image.description[:25]~'...' }}</td>
+                             <td><a class="btn btn-danger delete-image" id="{{ image.id }}">Supprimer</a>
+                                <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': image.id}) }}">Modifier</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="5">No entries available</td>
+                            <td colspan="5">Aucune images dans la base</td>
                         </tr>
                     {% endfor %}
                 </table>

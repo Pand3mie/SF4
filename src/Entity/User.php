@@ -113,11 +113,17 @@ class User extends BaseUser
      */
     protected $google;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Galerie", mappedBy="user_galerie")
+     */
+    private $galeries;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->socialUser = new ArrayCollection();
+        $this->galeries = new ArrayCollection();
         // your own logic
     }
 
@@ -468,6 +474,37 @@ class User extends BaseUser
     public function setGoogle(string $google)
     {
         $this->google = $google;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Galerie[]
+     */
+    public function getGaleries(): Collection
+    {
+        return $this->galeries;
+    }
+
+    public function addGalery(Galerie $galery): self
+    {
+        if (!$this->galeries->contains($galery)) {
+            $this->galeries[] = $galery;
+            $galery->setUserGalerie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGalery(Galerie $galery): self
+    {
+        if ($this->galeries->contains($galery)) {
+            $this->galeries->removeElement($galery);
+            // set the owning side to null (unless already changed)
+            if ($galery->getUserGalerie() === $this) {
+                $galery->setUserGalerie(null);
+            }
+        }
 
         return $this;
     }
