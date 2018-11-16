@@ -53,118 +53,118 @@
                                             <i class="large material-icons orange darken-1">settings</i>
                                         </a>
                                         <ul>
-                                            <li class='star {% if image.star >=1 %} selected{% endif %}' title='Poor' data-value='1'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=2 %} selected{% endif %}' title='Fair' data-value='2'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=3 %} selected{% endif %}' title='Good' data-value='3'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=4 %} selected{% endif %}' title='Excellent' data-value='4'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=5 %} selected{% endif %}' title='WOW!!!' data-value='5'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                                <li>
+                                                    <a class="btn-floating red delete-image" id="{{ image.id }}">
+                                                        <i class="material-icons">delete</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="btn-floating green">
+                                                        <i class="material-icons">publish</i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="btn-floating blue">
+                                                        <i class="material-icons">share</i>
+                                                    </a>
+                                                </li>
+                                    </ul>
                                 </div>
-                            {% endif %}
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">{{ image.title }}</span>
-                                <p>
-                                    <span class="activator grey-text text-darken-4">Description<i class="material-icons right">more_vert</i>
-                                    </span>
-                                </p>
                             </div>
-                            <div class="card-reveal">
-                                <div class="chip">
-                                    Catégorie :
-                                    {{ image.categorie }}
-                                </div>
-                                <span class="card-title grey-text text-darken-4">Description<i class="material-icons right">close</i>
+                        {% endif %}
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ image.title }}</span>
+                            <p>
+                                <span class="activator grey-text text-darken-4">Description<i class="material-icons right">more_vert</i>
                                 </span>
-                                <p>{{ image.description }}</p>
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <div class="chip">
+                                Catégorie :
+                                {{ image.categorie }}
                             </div>
+                            <span class="card-title grey-text text-darken-4">Description<i class="material-icons right">close</i>
+                            </span>
+                            <p>{{ image.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if not loop.first %}
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card hoverable deleteCard">
+
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="https://picsum.photos/900/300/?image={{ random(1000) }}">
+                            <span class="card-title">
+                                <div class='rating-stars text-center'>
+                                    <ul id='stars' data-star="{{ image.id }}">
+                                        <li class='star {% if image.star >=1 %} selected{% endif %}' title='Poor' data-value='1'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class='star{% if image.star >=2 %} selected{% endif %}' title='Fair' data-value='2'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class='star{% if image.star >=3 %} selected{% endif %}' title='Good' data-value='3'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class='star{% if image.star >=4 %} selected{% endif %}' title='Excellent' data-value='4'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                        <li class='star{% if image.star >=5 %} selected{% endif %}' title='WOW!!!' data-value='5'>
+                                            <i class='fa fa-star fa-fw'></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </span>
+                        </div>
+                        {% if app.user.id == image.getUserGalerie.id %}
+                            <div class="card-action" style="padding:0px">
+                                <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
+                                    <a class="btn-floating btn-large red">
+                                        <i class="large material-icons orange darken-1">settings</i>
+                                    </a>
+                                    <ul>
+                                        <li>
+                                            <a class="btn-floating red delete-image" id="{{ image.id }}">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn-floating green">
+                                                <i class="material-icons">publish</i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="btn-floating blue">
+                                                <i class="material-icons">share</i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">{{ image.title }}
+                                <i class="material-icons right ">more_vert</i>
+                            </span>
+                        </div>
+                        <div class="card-reveal">
+                            <div class="chip">
+                                Catégorie :
+                                {{ image.categorie }}
+                            </div>
+                            <span class="card-title grey-text text-darken-4">Description<i class="material-icons right">close</i>
+                            </span>
+                            <p>{{ image.description }}</p>
                         </div>
                     </div>
                 </div>
             {% endif %}
-            {% if not loop.first %}
-                <div class="row">
-                    <div class="col s12 m6">
-                        <div class="card hoverable deleteCard">
-
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator" src="https://picsum.photos/900/300/?image={{ random(1000) }}">
-                                <span class="card-title">
-                                    <div class='rating-stars text-center'>
-                                        <ul id='stars' data-star="{{ image.id }}">
-                                            <li class='star {% if image.star >=1 %} selected{% endif %}' title='Poor' data-value='1'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=2 %} selected{% endif %}' title='Fair' data-value='2'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=3 %} selected{% endif %}' title='Good' data-value='3'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=4 %} selected{% endif %}' title='Excellent' data-value='4'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                            <li class='star{% if image.star >=5 %} selected{% endif %}' title='WOW!!!' data-value='5'>
-                                                <i class='fa fa-star fa-fw'></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </span>
-                            </div>
-                            {% if app.user.id == image.getUserGalerie.id %}
-                                <div class="card-action" style="padding:0px">
-                                    <div class="fixed-action-btn horizontal" style="position:relative; float:right; bottom:35px; right:10px">
-                                        <a class="btn-floating btn-large red">
-                                            <i class="large material-icons orange darken-1">settings</i>
-                                        </a>
-                                        <ul>
-                                            <li>
-                                                <a class="btn-floating red delete-image" id="{{ image.id }}">
-                                                    <i class="material-icons">delete</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-floating green">
-                                                    <i class="material-icons">publish</i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="btn-floating blue">
-                                                    <i class="material-icons">share</i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            {% endif %}
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">{{ image.title }}
-                                    <i class="material-icons right ">more_vert</i>
-                                </span>
-                            </div>
-                            <div class="card-reveal">
-                                <div class="chip">
-                                    Catégorie :
-                                    {{ image.categorie }}
-                                </div>
-                                <span class="card-title grey-text text-darken-4">Description<i class="material-icons right">close</i>
-                                </span>
-                                <p>{{ image.description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}
