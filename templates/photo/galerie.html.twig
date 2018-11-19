@@ -98,7 +98,7 @@
                     <div class="card hoverable deleteCard">
 
                         <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator" src="https://picsum.photos/900/300/?image={{ random(1000) }}">
+                            <img class="activator" src="{% if image.image =='' %}https://picsum.photos/900/300/?image={{ random(1000) }}{% else %}{{ asset('/build/upload/' ~ image.image) }}{% endif %}">
                             <span class="card-title">
                                 <div class='rating-stars text-center'>
                                     <ul id='stars' data-star="{{ image.id }}">

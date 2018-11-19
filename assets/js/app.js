@@ -136,7 +136,7 @@ function starSave(ratingValue, id){
         data: {ratingValue: ratingValue, id: id },
         success: function(){  
             if (ratingValue <= 2){
-           M.toast({html: ratingValue + ' étoile(s) l\'image ne vous plait pas ? <button onclick="location.href=\'modify-entry/'+ id +'\'" class="btn-flat toast-action">Donner mon Avis</button>'})
+           M.toast({html: ratingValue + ' étoile(s) !! l\'image ne vous plait pas ? <button onclick="location.href=\'avis/'+ id +'\'" class="btn-flat toast-action">Donner mon Avis</button>'})
           }else{
             M.toast({html: ratingValue + ' étoile(s) !! Merci d\'avoir voté'}) 
           }

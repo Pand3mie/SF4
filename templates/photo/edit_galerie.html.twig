@@ -50,9 +50,9 @@
                         <tr id="{{ image.id }}" class="draggable">
                             <td><a href="{{ path('blog_view', {'id': image.id}) }}">{{ image.id }}</a></td>
                             <td>{{ image.title }}</td>
-                            <td width="150px"><img src="{{ image.image }}?image={{ random(1000) }}" alt="Chargement impossible" class="responsive-img"></td>
+                            <td width="150px"><img src="{% if image.image =='' %}https://picsum.photos/900/300/?image={{ random(1000) }}{% else %}{{ asset('/build/upload/' ~image.image) }}{% endif %}" alt="Chargement impossible" class="responsive-img"></td>
                             <td>{{ image.description[:25]~'...' }}</td>
-                            <td>{% if image.star =='' %} Pas encore de note{% else %}{{ image.star }}/5{% endif %}</td>
+                            <td>{% if image.star =='' %} Pas encore de note{% else %}{{ image.star }}/5{% endif  %}</td>
                              <td><a class="btn btn-danger delete-image" id="{{ image.id }}">Supprimer</a>
                                 <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': image.id}) }}">Modifier</a>
                             </td>

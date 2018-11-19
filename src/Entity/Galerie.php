@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -29,7 +31,6 @@ class Galerie
 
     /**
      * @ORM\Column(type="string")
-     *
      * @Assert\NotBlank(message="Ajouter une image jpg")
      * @Assert\File(mimeTypes={ "image/jpeg" })
      */
@@ -49,6 +50,16 @@ class Galerie
      *  @ORM\Column(type="integer", nullable=true)
      */
     private $star;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Avis", mappedBy="avis_image")
+     */
+    private $avis;
+
+    public function __construct()
+    {
+        $this->avis = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -80,12 +91,12 @@ class Galerie
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage($image): self
     {
         $this->image = $image;
 
@@ -135,4 +146,36 @@ class Galerie
 
         return $this;
     }
+
+    /**
+     * @return Collection|Avis[]
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): self
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis[] = $avi;
+            $avi->setAvisImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): self
+    {
+        if ($this->avis->contains($avi)) {
+            $this->avis->removeElement($avi);
+            // set the owning side to null (unless already changed)
+            if ($avi->getAvisImage() === $this) {
+                $avi->setAvisImage(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
