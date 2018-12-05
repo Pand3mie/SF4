@@ -36,7 +36,7 @@
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <a type="button" href="{{ path('galerieCreate') }}" class="btn btn-primary pull-right">Ajouter une image</a>
             </div>
-            <div class="col s12 m6 l8">
+            <div class="col s12 m6 l12">
                 <table class="table table-striped responsive-table">
                     <thead>
                         <th>Id</th>
@@ -45,17 +45,33 @@
                         <th>Description</th>
                         <th>Note</th>
                         <th>Actions</th>
+                        <th>Avis</th>
                     </thead>
                     {% for image in images %}
                         <tr id="{{ image.id }}" class="draggable">
                             <td><a href="{{ path('blog_view', {'id': image.id}) }}">{{ image.id }}</a></td>
                             <td>{{ image.title }}</td>
-                            <td width="150px"><img src="{% if image.image =='' %}https://picsum.photos/900/300/?image={{ random(1000) }}{% else %}{{ asset('/build/upload/' ~image.image) }}{% endif %}" alt="Chargement impossible" class="responsive-img"></td>
+                            <td width="150px"><img src="{% if image.image =='' %}https://picsum.photos/900/300/?image={{ random(1000) }}{% else %}{{ asset('/upload/' ~image.image) }}{% endif %}" alt="Chargement impossible" class="responsive-img"></td>
                             <td>{{ image.description[:25]~'...' }}</td>
                             <td>{% if image.star =='' %} Pas encore de note{% else %}{{ image.star }}/5{% endif  %}</td>
-                             <td><a class="btn btn-danger delete-image" id="{{ image.id }}">Supprimer</a>
-                                <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': image.id}) }}">Modifier</a>
+                             <td>
+                                <div style="display:flex;flex-direction:row;align-items:flex-start"> 
+                                    <a class="btn btn-danger delete-image" id="{{ image.id }}" style="margin-left: 10px;">Supprimer</a>
+                                    <a class="btn btn-danger" href="{{ path('admin_modify_entry', {'id': image.id}) }}">Modifier</a>
+                                </div>     
                             </td>
+                            
+                                <td class="{% if image.avis|length > 0 %}red-text{% else %}green-text{% endif %}" style="font-weight:bold">
+                               {% if image.avis|length > 0 %}
+                                    {{ image.avis|length }} avis
+                                {% else %}
+                                    Pas encore d'avis sur cette photo.
+                                {% endif %}
+                              
+                                
+                                </td>
+                            
+
                         </tr>
                     {% else %}
                         <tr>

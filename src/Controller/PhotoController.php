@@ -6,6 +6,7 @@ use App\Entity\Galerie;
 use App\Entity\Avis;
 use App\Form\GalerieFormType;
 use App\Form\AvisType;
+use App\Repository\GalerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,17 +14,22 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 
 class PhotoController extends Controller
 {
 
+    private $galerieRepository;
+    private $avisRepository;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
     $this->entityManager = $entityManager;
     $this->GalerieRepository = $entityManager->getRepository('App:Galerie');
     $this->userRepository = $entityManager->getRepository('App:User');
+    $this->avisRepository = $entityManager->getRepository('App:Avis');
     }
 
 
@@ -41,6 +47,23 @@ class PhotoController extends Controller
     }
 
     /**
+     * @Route("/download/{id}", name="download")
+     */
+    public function downloadImage($id, Request $request)
+    {   
+        
+            $id = $request->query->get('id');
+            dump('id : '.$id);
+            $image = $this->GalerieRepository->findOneById($id);
+            dump($image);
+            $filename = $image->getImage($id);
+            $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
+            $download_image = $this->getParameter('download').'\\'.$filename;
+            return $this->file($download_image);
+        }
+
+        
+    /**
      * @Route("/edit_Galerie", name="editGalerie")
      */
     public function editGalerie()
@@ -49,12 +72,14 @@ class PhotoController extends Controller
         $images = $this->getDoctrine()
         ->getRepository(Galerie::class)
         ->findAll();
+        $query = $this->avisRepository->getAvisImage();
+        dump($query);
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $images
         );
 
-        return $this->render('photo/edit_galerie.html.twig', [
+        return $this->render('photo/edit_galerie.html.twig', ['avis' => $query,
             'images' => $images, 'pagination' => $pagination
         ]);
     }
@@ -169,29 +194,43 @@ return new Response("Erreur : ce n'est pas une requete Ajax", 400);
         $image = $this->getDoctrine()
         ->getRepository(Galerie::class)
         ->find($id);
-        dump($image);
+        
         //find user of image
        // $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
        // $image->setUserGalerie($author);
 
         // form Avis
         $avis = new Avis();
+        $galerie = new Galerie();
+        $avis->setAvis_image($image->addAvis($avis));
+       
+
         $form = $this->createForm(AvisType::class, $avis);
+
+        //getAuthor
+        $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
+
+        $avis->setAuthor($author);
+   
+
         $form->handleRequest($request);
 
-        if($request->isXmlHttpRequest()){
-            $id = $request->request->get('id');
-            $star = $request->request->get('ratingValue');
-            $image = $this->GalerieRepository->findOneById($id);
-            $image->setStar($star);
-            $this->entityManager->persist($image);
-            $this->entityManager->flush();
-        
-        
-            return new Response('Post delete');
+
+       // dump($p);
+
+       // Check is valid
+       if ($form->isSubmitted() && $form->isValid()) {
+            $this->entityManager->persist($avis);
+            $this->entityManager->flush($avis);
+
+            $this->addFlash('success', 'Votre avis à bien été pris en compte');
+   
+           return $this->redirectToRoute('photo');
+    
         }
-        return $this->render('photo/avis.html.twig', ['image'=>$image->getImage(),
-        'form' => $form->createView()            
+        return $this->render('photo/avis.html.twig', ['image'=>$image->getId(),
+        'preview'=>$image,
+        'form' => $form->createView(), 'author' => $author         
         ]);
     }
 

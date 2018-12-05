@@ -155,27 +155,39 @@ class Galerie
         return $this->avis;
     }
 
-    public function addAvi(Avis $avi): self
+    public function addAvis(Avis $avi): self
     {
         if (!$this->avis->contains($avi)) {
             $this->avis[] = $avi;
-            $avi->setAvisImage($this);
+            $avi->setAvis_image($this);
         }
 
         return $this;
     }
 
-    public function removeAvi(Avis $avi): self
+    public function removeAvis(Avis $avi): self
     {
         if ($this->avis->contains($avi)) {
             $this->avis->removeElement($avi);
             // set the owning side to null (unless already changed)
-            if ($avi->getAvisImage() === $this) {
-                $avi->setAvisImage(null);
+            if ($avi->getAvis_image() === $this) {
+                $avi->setAvis_image(null);
             }
         }
 
         return $this;
     }
 
+
+    /**
+     * Set the value of avis
+     *
+     * @return  self
+     */ 
+    public function setAvis($avis)
+    {
+        $this->avis = $avis;
+
+        return $this;
+    }
 }

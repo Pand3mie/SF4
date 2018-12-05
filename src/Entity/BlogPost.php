@@ -63,7 +63,7 @@ class BlogPost
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetimetz")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 

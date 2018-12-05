@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AvisRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Avis
 {
@@ -32,9 +33,21 @@ class Avis
     private $create_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Galerie", inversedBy="avis")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Galerie", inversedBy="avis",cascade={"persist"})
+     * @ORM\JoinColumn(name="avis_image_id", referencedColumnName="id")
      */
     private $avis_image;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        if (!$this->getCreateAt()) {
+            $this->setCreateAt(new \DateTime());
+        }
+
+    }
 
     public function getId(): ?int
     {
@@ -77,12 +90,33 @@ class Avis
         return $this;
     }
 
-    public function getAvisImage(): ?Galerie
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of avis_image
+     */ 
+    public function getAvis_image()
     {
         return $this->avis_image;
     }
 
-    public function setAvisImage(?Galerie $avis_image): self
+    /**
+     * Set the value of avis_image
+     *
+     * @return  self
+     */ 
+    public function setAvis_image($avis_image)
     {
         $this->avis_image = $avis_image;
 

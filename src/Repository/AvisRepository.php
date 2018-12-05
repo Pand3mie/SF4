@@ -19,6 +19,16 @@ class AvisRepository extends ServiceEntityRepository
         parent::__construct($registry, Avis::class);
     }
 
+    public function getAvisImage()
+    {
+        return $this->createQueryBuilder('s')
+        ->leftJoin('s.avis_image', 'p')
+        ->addSelect('p')
+        ->getQuery()
+        ->getResult();
+
+    }
+
 //    /**
 //     * @return Avis[] Returns an array of Avis objects
 //     */
