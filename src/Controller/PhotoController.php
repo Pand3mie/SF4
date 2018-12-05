@@ -53,10 +53,10 @@ class PhotoController extends Controller
     {   
         
             $id = $request->query->get('id');
-            dump('id : '.$id);
+            dump('id : '. $id);
             $image = $this->GalerieRepository->findOneById($id);
             dump($image);
-            $filename = $image->getImage($id);
+            $filename = $image->getImage();
             $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
             $download_image = $this->getParameter('download').'\\'.$filename;
             return $this->file($download_image);
