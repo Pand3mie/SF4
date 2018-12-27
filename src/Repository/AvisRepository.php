@@ -29,6 +29,17 @@ class AvisRepository extends ServiceEntityRepository
 
     }
 
+    public function getAllAvisImage($id)
+    {
+        return $this->createQueryBuilder('s')
+        ->leftJoin('s.avis_image', 'p')
+        ->addSelect('p')
+        ->Where('s.avis_image =' . $id)
+        ->getQuery()
+        ->getResult();
+
+    }
+
 //    /**
 //     * @return Avis[] Returns an array of Avis objects
 //     */

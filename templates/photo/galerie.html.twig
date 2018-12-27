@@ -16,6 +16,11 @@
             <h2 class="blog-title">Galerie images</h2>
             <p class="lead blog-description"></p>
         </div>
+        {% for message in app.flashes('info') %}
+    <div class="flash-info">
+        {{ message }}
+    </div>
+{% endfor %}
         {% for image in images %}
             {% if loop.first %}
                 <div class="row">
@@ -58,11 +63,13 @@
                                                         <i class="material-icons">delete</i>
                                                     </a>
                                                 </li>
+                                                {% if image.image !=''  %}
                                                 <li>
                                                     <a class="btn-floating green download-image" href="{{ path('download', {'id': image.id}) }}" id="{{ image.id }}">
                                                         <i class="material-icons">publish</i>
                                                     </a>
                                                 </li>
+                                                {% endif %}
                                                 <li>
                                                     <a class="btn-floating blue">
                                                         <i class="material-icons">share</i>
@@ -133,11 +140,13 @@
                                                 <i class="material-icons">delete</i>
                                             </a>
                                         </li>
+                                        {% if image.image !=''  %}
                                         <li>
-                                                <a class="btn-floating green download-image" href="{{ path('download', {'id': image.id}) }}" id="{{ image.id }}">
-                                                    <i class="material-icons">publish</i>
-                                                </a>
-                                            </li>
+                                            <a class="btn-floating green download-image" href="{{ path('download', {'id': image.id}) }}" id="{{ image.id }}">
+                                                <i class="material-icons">publish</i>
+                                            </a>
+                                        </li>
+                                        {% endif %}
                                             <li>
                                                 <a class="btn-floating blue">
                                                     <i class="material-icons">share</i>

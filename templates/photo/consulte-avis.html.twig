@@ -1,0 +1,55 @@
+{% extends 'default/base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block header %}
+    {{ include('default/header.html.twig') }}
+{% endblock %}
+
+{% block menu %}
+    {{ include('default/menu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('info') %}
+        <div class="flash-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <h2 class="blog-title">Consultation de(s) l'avis / ID :
+                {{ id }}</h2>
+            {% for i in avis %}
+                <div class="col s12 m7">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="https://picsum.photos/400/300/?image={{ random(1000) }}">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">{{ i.avis_image.title }}<i class="material-icons right">more_vert</i>
+                                </span>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">{{ i.avis_image.title }}<i class="material-icons right">close</i>
+                                </span>
+                                <p style="text-decoration: underline;"><h5>Avis :</h5></p>
+                                <p>{{i.content}}</p>
+                                    <p>
+                                    {{ form_start(form) }}
+                                           {{ form_label(form.fromResponse, { 
+                                               'label' : 'Destinataire'
+                                           }) }}
+                                           {{ form_row(form.fromResponse) }} 
+
+
+                                    {{ form_end(form) }}
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}

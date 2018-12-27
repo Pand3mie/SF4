@@ -8,6 +8,9 @@ use App\Repository\BlogPostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Debug\Debug;
+
+
 
 class HomeController extends AbstractController
 {
@@ -25,11 +28,13 @@ class HomeController extends AbstractController
      */
     public function index(SocialControl $social)
     {
+        $usersOnline = $this->userRepository->findAll();
+
         $query = $this->blogPostRepository->getLastBlogPost();
 
         $find = $social->getSocial();
         return $this->render('home/home.html.twig', [
-            'getsocial' => $find, 'last' => $query
+            'getsocial' => $find, 'last' => $query, 'userOnline' => $usersOnline
         ]);
     }
     

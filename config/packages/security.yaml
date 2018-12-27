@@ -26,7 +26,7 @@ security:
             logout:       
                 path: /logout
                 target: /
-                handlers: [logout_handler]
+                handlers: [logout_listener]
             anonymous:    true
             remember_me:
                 secret:   '%kernel.secret%'

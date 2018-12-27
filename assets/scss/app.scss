@@ -345,6 +345,13 @@ height:2px;
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
 }
-.activator{
+.pointille{
+  color : red;
+  border-bottom-style: dotted;
+  border-bottom-color: red;
+  border-bottom-width: thin;
+}
 
+.widthBadge {
+  width: 100px;
 }

@@ -63,7 +63,7 @@
                             
                                 <td class="{% if image.avis|length > 0 %}red-text{% else %}green-text{% endif %}" style="font-weight:bold">
                                {% if image.avis|length > 0 %}
-                                    {{ image.avis|length }} avis
+                                    <a class="pointille" href="{{ path('consulte-avis', {'id': image.id}) }}">{{ image.avis|length }} avis</a>
                                 {% else %}
                                     Pas encore d'avis sur cette photo.
                                 {% endif %}

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +39,17 @@ class Avis
      * @ORM\JoinColumn(name="avis_image_id", referencedColumnName="id")
      */
     private $avis_image;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Response", mappedBy="idAvis")
+     */
+    private $responses;
+    
+
+    public function __construct()
+    {
+        $this->responses = new ArrayCollection();
+    }
 
     /**
      * @ORM\PrePersist
@@ -119,6 +132,37 @@ class Avis
     public function setAvis_image($avis_image)
     {
         $this->avis_image = $avis_image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Response[]
+     */
+    public function getResponses(): Collection
+    {
+        return $this->responses;
+    }
+
+    public function addResponse(Response $response): self
+    {
+        if (!$this->responses->contains($response)) {
+            $this->responses[] = $response;
+            $response->setIdAvis($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResponse(Response $response): self
+    {
+        if ($this->responses->contains($response)) {
+            $this->responses->removeElement($response);
+            // set the owning side to null (unless already changed)
+            if ($response->getIdAvis() === $this) {
+                $response->setIdAvis(null);
+            }
+        }
 
         return $this;
     }

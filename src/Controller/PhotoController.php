@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Galerie;
 use App\Entity\Avis;
 use App\Form\GalerieFormType;
+use App\Form\AvisResponseType;
 use App\Form\AvisType;
 use App\Repository\GalerieRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -52,10 +53,9 @@ class PhotoController extends Controller
     public function downloadImage($id, Request $request)
     {   
         
-            $id = $request->query->get('id');
-            dump('id : '. $id);
+            $id = $request->attributes->get('id');
+            //dump($id);
             $image = $this->GalerieRepository->findOneById($id);
-            dump($image);
             $filename = $image->getImage();
             $author = $this->userRepository->findOneByUsername($this->getUser()->getUserName());
             $download_image = $this->getParameter('download').'\\'.$filename;
@@ -234,6 +234,22 @@ return new Response("Erreur : ce n'est pas une requete Ajax", 400);
         ]);
     }
 
+    /**
+     * @Route("/consulte-avis/{id}", name="consulte-avis", options={"expose"=true})
+     */
+    public function consulteAvis($id, Request $request)
+    {
+        $form = $this->createForm(AvisResponseType::class);
+        $form->handleRequest($request);
 
+        $id = $request->attributes->get('id');
+        //dump($id);
+        $avis = $this->avisRepository->getAllAvisImage($id);
+        dump($avis);
+        return $this->render('photo/consulte-avis.html.twig', ['avis'=>$avis,
+        'id' => $id,'form' => $form->createView(),
+        ]);
+
+    }
 
 }
