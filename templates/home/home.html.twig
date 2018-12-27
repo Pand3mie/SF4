@@ -24,9 +24,14 @@
                     </p>
                 </div>
             </div>
-            {# bloc utilisateurs en ligne visible si user admin #}
+            
+            <div class="data">
+                <div id="gif" class="col s12 m4"><img src="{{ asset('build/images/loader.gif') }}" alt="">
+                </div>
+            </div>
+  <!--          {# bloc utilisateurs en ligne visible si user admin #}
             {% if is_granted('ROLE_ADMIN') %}
-            <div class="col s12 m4">
+            <div id="whoishere" class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center">
                         <i class="material-icons">group</i>
@@ -46,7 +51,7 @@
                 </div>
             </div>
             {% endif %}
-            {# fin de bloc utilisateurs en ligne #}
+         {# fin de bloc utilisateurs en ligne #} -->
             <div class="col s12 m4">
                 <div class="icon-block">
                     <h2 class="center">

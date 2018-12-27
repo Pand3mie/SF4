@@ -1,0 +1,23 @@
+ {# bloc utilisateurs en ligne visible si user admin #}
+ {% if is_granted('ROLE_ADMIN') %}
+ <div id="whoishere" class="col s12 m4">
+     <div class="icon-block">
+         <h2 class="center">
+             <i class="material-icons">group</i>
+         </h2>
+         <h5 class="center">Utilisateurs En ligne</h5>
+         
+         <div class="collection">
+             {% for users in userOnline %}
+
+                 <a href="#!" class="collection-item"><span class="widthBadge new badge
+                     {% if users.onLineUser == 1 %}green{% else %}red{% endif %}
+                     " data-badge-caption="{% if users.onLineUser == 1 %}En ligne{% else %}Deconnecté{% endif %}">
+                 </span>{{users.username| capitalize }}</a>
+
+             {% endfor %}
+         </div>
+     </div>
+ </div>
+ {% endif %}
+ {# fin de bloc utilisateurs en ligne #}

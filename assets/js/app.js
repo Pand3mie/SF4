@@ -13,7 +13,7 @@ global.$ = global.jQuery = $;
 $(document).ready(function(){
 
     // delete post in ajax
-
+    connect();
     var id = $( ".delete-entries" ).attr('id');
     
 
@@ -218,5 +218,22 @@ $('.fixed-action-btn').floatingActionButton({
     direction:'left'
 });
 
+function connect(){
+        $.ajax({
+            url: "connect",
+            type: "POST",
+            success: function(data){
+                $('.data').html(data);
+            },
+            beforeSend: function(){
+                $('#gif').fadeIn(300);
+            },
+            complete: function(){
+                $('#gif').fadeOut(300);
+            }
+        });
+    }
 
+    setInterval(connect, 3000);
+    
 });
