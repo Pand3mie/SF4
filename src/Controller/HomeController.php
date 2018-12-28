@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BlogPost;
+use Psr\Log\LoggerInterface;
 use App\Service\SocialControl;
 use Symfony\Component\Debug\Debug;
 use App\Repository\BlogPostRepository;
@@ -31,6 +32,8 @@ class HomeController extends AbstractController
      */
     public function index(SocialControl $social)
     {
+
+
         $usersOnline = $this->userRepository->findAll();
 
         $query = $this->blogPostRepository->getLastBlogPost();

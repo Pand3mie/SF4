@@ -49,7 +49,7 @@
                     </thead>
                     {% for image in images %}
                         <tr id="{{ image.id }}" class="draggable">
-                            <td><a href="{{ path('blog_view', {'id': image.id}) }}">{{ image.id }}</a></td>
+                            <td><a href="{{ path('viewImage', {'id': image.id}) }}">{{ image.id }}</a></td>
                             <td>{{ image.title }}</td>
                             <td width="150px"><img src="{% if image.image =='' %}https://picsum.photos/900/300/?image={{ random(1000) }}{% else %}{{ asset('/upload/' ~image.image) }}{% endif %}" alt="Chargement impossible" class="responsive-img"></td>
                             <td>{{ image.description[:25]~'...' }}</td>

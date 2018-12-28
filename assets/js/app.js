@@ -220,16 +220,16 @@ $('.fixed-action-btn').floatingActionButton({
 
 function connect(){
         $.ajax({
-            url: "connect",
+            url: "/connect",
             type: "POST",
             success: function(data){
                 $('.data').html(data);
             },
             beforeSend: function(){
-                $('#gif').fadeIn(300);
+                $('#gif').fadeIn(3000);
             },
             complete: function(){
-                $('#gif').fadeOut(300);
+                $('#gif').fadeOut(3000);
             }
         });
     }

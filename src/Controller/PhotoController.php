@@ -48,6 +48,21 @@ class PhotoController extends Controller
     }
 
     /**
+     * @Route("/view_image/{id}", name="viewImage")
+     */
+    public function viewImage($id)
+    {
+       
+        $images = $this->getDoctrine()
+        ->getRepository(Galerie::class)
+        ->find($id);
+        dump($images);
+        return $this->render('photo/view_image.html.twig', [
+            'images' => $images,
+        ]);
+    }
+
+    /**
      * @Route("/download/{id}", name="download")
      */
     public function downloadImage($id, Request $request)
@@ -243,7 +258,7 @@ return new Response("Erreur : ce n'est pas une requete Ajax", 400);
         $form->handleRequest($request);
 
         $id = $request->attributes->get('id');
-        //dump($id);
+        dump($id);
         $avis = $this->avisRepository->getAllAvisImage($id);
         dump($avis);
         return $this->render('photo/consulte-avis.html.twig', ['avis'=>$avis,

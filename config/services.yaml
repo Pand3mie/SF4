@@ -6,6 +6,8 @@
 parameters:
     image: '%kernel.project_dir%/public/upload'
     download: '%kernel.project_dir%\public\upload'
+
+    lockpath: '%kernel.root_dir%/../.lock'
     locale: 'fr'
 services:
     # default configuration for services in *this* file
@@ -30,6 +32,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    maintenance_listener:
+        class: 'App\EventListener\MaintenanceListener'
+        arguments: 
+            - '%lockpath%'
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest' }
     login_listener:
         class: 'App\Listener\LoginListener'
         arguments: ['@fos_user.user_manager']
@@ -59,4 +67,4 @@ services:
     app.service.social:
         class: App\Service\SocialControl
         arguments: ['@doctrine']        
-        
+    

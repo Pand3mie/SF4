@@ -8,7 +8,8 @@ framework:
     # Remove or comment this section to explicitly disable session support.
     session:
         handler_id: ~
-
+        cookie_lifetime: 0 
+        gc_maxlifetime: 18000 
     #esi: true
     #fragments: true
     php_errors:

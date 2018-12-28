@@ -1,0 +1,31 @@
+{% extends 'default/base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block header %}
+    {{ include('default/header.html.twig') }}
+{% endblock %}
+
+{% block menu %}
+    {{ include('default/menu.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="blog-header">
+            <h2 class="blog-title">Galerie images</h2>
+            <p class="lead blog-description"></p>
+        </div>
+        {% for message in app.flashes('info') %}
+            <div class="flash-info">
+                {{ message }}
+            </div>
+        {% endfor %}
+       
+            Titre :
+            {{ images.title }}
+            image :
+            <img src="{{ asset('/build/images', {'id': images.id}) }}" alt="">
+      
+
+{% endblock %}
