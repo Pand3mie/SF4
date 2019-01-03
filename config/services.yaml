@@ -66,5 +66,7 @@ services:
             - { name: 'form.type', alias: 'app_user_registration' }
     app.service.social:
         class: App\Service\SocialControl
-        arguments: ['@doctrine']        
+        arguments: ['@doctrine']       
+    HomeController:
+        class: App\Controller\HomeController::index
     

@@ -21,6 +21,11 @@
         {{ message }}
     </div>
 {% endfor %}
+    {# bloc utilisateurs en ligne visible si user admin #}
+    <div class="cardUser">
+            {% include "default/dataUserOnline.html.twig" %}
+            </div>
+         {# fin de bloc utilisateurs en ligne #}
         {% for image in images %}
             {% if loop.first %}
                 <div class="row">

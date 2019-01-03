@@ -21,11 +21,13 @@ class BlogController extends Controller
 
     private $authorRepository;
     private $blogPostRepository;
+     private $onLine;
 
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, HomeController $online)
     {
     $this->entityManager = $entityManager;
+    $this->online = $online;
     $this->blogPostRepository = $entityManager->getRepository('App:BlogPost');
     $this->userRepository = $entityManager->getRepository('App:User');
     $this->tagRepository = $entityManager->getRepository('App:Tag');
@@ -43,13 +45,15 @@ class BlogController extends Controller
         //$query = $this->blogPostRepository->findBy(array(),array('id' => 'DESC'));
 
         $paginator  = $this->get('knp_paginator');
+        $online = $this->online->userRepository->findAll();;
+        dump($online);
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
             $request->query->getInt('limit', 2)
         );
         return $this->render('blog/blog.html.twig', [
-            'blogPosts' => $query, 'pagination' => $pagination
+            'blogPosts' => $query, 'pagination' => $pagination, 'online' => $online
         ]);
     }
 

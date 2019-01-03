@@ -23,12 +23,8 @@
                         <a href="#">En savoir plus ></a>
                     </p>
                 </div>
-            </div>
-            
-            <div class="data">
-                <div id="gif" class="col s12 m4"><img src="{{ asset('build/images/loader.gif') }}" alt="">
-                </div>
-            </div>
+            </div>      
+{% include "default/dataUserOnline.html.twig" %}
   <!--          {# bloc utilisateurs en ligne visible si user admin #}
             {% if is_granted('ROLE_ADMIN') %}
             <div id="whoishere" class="col s12 m4">

@@ -209,6 +209,10 @@ $('.carousel.carousel-slider').carousel({
         indicators: true,
  }, setTimeout(autoplay, 4500));
 
+
+
+
+
  function autoplay() {
    $('.carousel').carousel('next');
    setTimeout(autoplay, 10000);
@@ -235,5 +239,5 @@ function connect(){
     }
 
     setInterval(connect, 3000);
-    
+
 });

@@ -12,7 +12,11 @@
 
 {% block body %}
 <div class="container">
-
+    {# bloc utilisateurs en ligne visible si user admin #}
+    <div class="cardUser">
+    {% include "default/dataUserOnline.html.twig" %}
+    </div>
+ {# fin de bloc utilisateurs en ligne #}
     {% for blogPost in blogPosts %}
          <div class="row">
                 <div class="col s12 m7 l12">
