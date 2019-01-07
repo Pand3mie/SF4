@@ -53,9 +53,16 @@ class BlogPostRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('s')
         ->leftJoin('s.blogTags', 'p')
         ->addSelect('p')
+        ->getQuery();
+    }
+
+    public function getAllTagsMeta()
+    {
+        return $this->createQueryBuilder('s')
+        ->leftJoin('s.blogTags', 'p')
+        ->addSelect('p')
         ->getQuery()
         ->getResult();
-
     }
 
 

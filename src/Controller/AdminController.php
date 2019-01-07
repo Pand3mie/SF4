@@ -53,11 +53,13 @@ class AdminController extends Controller
     //  if ($author) {
     //     $blogPosts = $this->blogPostRepository->findByAuthor($author);
     //  }
-        $blogPosts = $this->blogPostRepository->findBy(array(),array('id' => 'DESC'));
+        $blogPosts = $this->blogPostRepository->findBy(array(),array('id' => 'ASC'));
+
         $paginator  = $this->get('knp_paginator');
-        $pagination = $paginator->paginate($blogPosts, $request->query->getInt('page', 1), 3);
+        $pagination = $paginator->paginate($blogPosts, $request->query->getInt('page', 1), 5);
+
         return $this->render('default/admin/entries.html.twig', [
-            'blogPosts' => $blogPosts, 'pagination' => $pagination
+            'blogPosts' => $pagination, 'pagination' => $pagination
         ]);
     }
 

@@ -8,6 +8,7 @@ use App\Entity\BlogComment;
 use App\Form\EntryFormType;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,23 +38,25 @@ class BlogController extends Controller
     /**
      * @Route("/blog", name="blog")
      */
-    public function index(Request $request)
+    public function index(PaginatorInterface $paginator, Request $request)
     {
         $query = $this->blogPostRepository->getTagsMeta();
+        $AllBlogPost = $this->blogPostRepository->getAllTagsMeta();
         //dump($query);
 
         //$query = $this->blogPostRepository->findBy(array(),array('id' => 'DESC'));
 
         $paginator  = $this->get('knp_paginator');
         $online = $this->online->userRepository->findAll();;
-        dump($online);
+        //dump($online);
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            $request->query->getInt('limit', 2)
+            $request->query->getInt('limit', 3)
         );
+        //dump($paginator);
         return $this->render('blog/blog.html.twig', [
-            'blogPosts' => $query, 'pagination' => $pagination, 'online' => $online
+            'blogPosts' => $pagination, 'pagination' => $pagination, 'online' => $online
         ]);
     }
 
