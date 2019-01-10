@@ -17,7 +17,7 @@ easy_admin:
                   - { name: 'edit', icon: 'pencil', label: '' }
                   - { name: 'delete', icon: 'trash', label: '' }
                 fields: [{ property: 'username', label: 'Name' }, { property: 'enabled', label: 'Statut' , template: 'Fields/toggle.html.twig'}, { property: 'email', label: 'Contact' }, { property: 'roles', label: 'Rôles' }]
-
+        
 
                   
 
